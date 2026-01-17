@@ -1,6 +1,20 @@
-# Stats
+# Deeku edition Modifications to Armel/F4HWN
 
-![Alt](https://repobeats.axiom.co/api/embed/947813147857755cef60a960d13734044b3b2c22.svg "Repobeats analytics image")
+The idea was to reduce annoyances and useless features.
+
+- Menu is more like stock
+- Sleep setting renamed from "SetOff" to "Sleep" and no annoying backlight flashing before timeout
+- Rescueops doesn't have flashy flashlight
+- Disabled scanlist editing holding down 5
+- Carefully chosen custom features
+    - FMRadio
+    - Rescueops without flashy flashlight
+    - Removed VOX, aircopy, spectrum, serial viewer and narrower bandwidth
+    
+Builds fine on Debian 13 using gcc-arm-none-eabi from official repos, python3-crc-something needed also intalling (it'll complain on packing step).
+Just running `make clean && make`. Docker things are not tested so may or may not work.
+
+Below is Armel/F4HWN original readme.
 
 # Open re-implementation of the Quansheng UV-K5/K6/5R v2.1.27 firmware
 

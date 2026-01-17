@@ -149,7 +149,7 @@ const t_menu_item MenuList[] =
     {"SetGUI",      MENU_SET_GUI       },
     {"SetTmr",      MENU_SET_TMR       },
 #ifdef ENABLE_FEAT_F4HWN_SLEEP
-    {"SetOff",       MENU_SET_OFF      },
+    {"Sleep",       MENU_SET_OFF      },
 #endif
 #ifdef ENABLE_FEAT_F4HWN_NARROWER
     {"SetNFM",      MENU_SET_NFM       },
@@ -161,7 +161,7 @@ const t_menu_item MenuList[] =
     {"SetKey",      MENU_SET_KEY       },
 #endif
 #ifdef ENABLE_NOAA
-    {"SetNWR",      MENU_NOAA_S    },
+    {"NOAA",      MENU_NOAA_S    },
 #endif
 #endif
     // hidden menu items from here on
@@ -532,15 +532,19 @@ void UI_DisplayMenu(void)
     }
 
     // draw vertical separating dotted line
-    for (i = 0; i < 7; i++)
-        gFrameBuffer[i][(8 * menu_list_width) + 1] = 0xAA;
+    //for (i = 0; i < 7; i++)
+    //    gFrameBuffer[i][(8 * menu_list_width) + 1] = 0xAA;
+    UI_DrawLineBuffer(gFrameBuffer, 0, 46, 48, 46, 1); // Howizontal line
 
     // draw the little sub-menu triangle marker
     if (gIsInSubMenu)
-        memcpy(gFrameBuffer[0] + (8 * menu_list_width) + 1, BITMAP_CurrentIndicator, sizeof(BITMAP_CurrentIndicator));
+    {
+        memcpy(gFrameBuffer[2] + (8 * menu_list_width) -8, BITMAP_CurrentIndicatorTop, sizeof(BITMAP_CurrentIndicatorTop));
+        memcpy(gFrameBuffer[3] + (8 * menu_list_width) -8, BITMAP_CurrentIndicatorBot, sizeof(BITMAP_CurrentIndicatorBot));
+    }
 
     // draw the menu index number/count
-    sprintf(String, "%2u.%u", 1 + gMenuCursor, gMenuListCount);
+    sprintf(String, "%2u/%u", 1 + gMenuCursor, gMenuListCount);
 
     UI_PrintStringSmallNormal(String, 2, 0, 6);
 

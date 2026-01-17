@@ -362,14 +362,24 @@ const uint8_t BITMAP_NOAA[12] =
 #endif
 
 #ifndef ENABLE_CUSTOM_MENU_LAYOUT
-const uint8_t BITMAP_CurrentIndicator[8] = {
-    0xFF,
-    0xFF,
-    0x7E,
-    0x7E,
-    0x3C,
-    0x3C,
-    0x18,
-    0x18
+const uint8_t BITMAP_CurrentIndicatorTop[8] = {
+    0b00000001,
+    0b00000011,
+    0b00000111,
+    0b00001111,
+    0b00011111,
+    0b00111111,
+    0b01111111,
+    0b11111111
+};
+const uint8_t BITMAP_CurrentIndicatorBot[8] = {
+    0b10000000,
+    0b11000000,
+    0b11100000,
+    0b11110000,
+    0b11111000,
+    0b11111100,
+    0b11111110,
+    0b11111111
 };
 #endif
