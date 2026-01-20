@@ -24,7 +24,11 @@
 #include "settings.h"
 
 typedef struct {
-    const char  name[7];    // menu display area only has room for 6 characters
+    #if defined(ENABLE_CUSTOM_MENU_DEEKU)
+    const char  name[17];    // menu display area only has room for 6 characters
+    #else
+    const char  name[6];    // menu display area only has room for 6 characters
+    #endif
     uint8_t     menu_id;
 } t_menu_item;
 
@@ -46,7 +50,7 @@ enum
 #endif
     MENU_BCL,
 #ifdef ENABLE_FEAT_F4HWN
-    MENU_TX_LOCK, 
+    MENU_TX_LOCK,
 #endif
     MENU_MEM_CH,
     MENU_DEL_CH,
@@ -93,7 +97,7 @@ enum
     MENU_D_HOLD,
 #endif
     MENU_D_PRE,
-#ifdef ENABLE_DTMF_CALLING  
+#ifdef ENABLE_DTMF_CALLING
     MENU_D_DCD,
     MENU_D_LIST,
 #endif
@@ -217,13 +221,13 @@ extern const char        gSubMenu_BATTYP[3][9];
 typedef struct {char* name; uint8_t id;} t_sidefunction;
 extern const uint8_t         gSubMenu_SIDEFUNCTIONS_size;
 extern const t_sidefunction gSubMenu_SIDEFUNCTIONS[];
-                         
+
 extern bool              gIsInSubMenu;
-                         
+
 extern uint8_t           gMenuCursor;
 
 extern int32_t           gSubMenuSelection;
-                         
+
 extern char              edit_original[17];
 extern char              edit[17];
 extern int               edit_index;
