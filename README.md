@@ -2,6 +2,8 @@
 
 The idea was to reduce annoyances and useless features.
 
+Please note this is for v1 of the radio chip and will brick v2 and v3 machines!
+
 - Menu is more like stock
 - Sleep setting renamed from "SetOff" to "Sleep" and no annoying backlight flashing before timeout
 - Rescueops doesn't have flashy flashlight
