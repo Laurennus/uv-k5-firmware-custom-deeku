@@ -1,6 +1,23 @@
-# Stats
+# Deeku edition Modifications to Armel/F4HWN
 
-![Alt](https://repobeats.axiom.co/api/embed/947813147857755cef60a960d13734044b3b2c22.svg "Repobeats analytics image")
+The idea was to reduce annoyances and useless features.
+
+Please note this is for v1 of the radio chip and will brick v2 and v3 machines!
+
+- Menu has seen an overhaul, many items renamed
+- Sleep setting renamed from "SetOff" to "Sleep" and no annoying backlight flashing before timeout
+- Speaker volume gain setting enabled
+- Rescueops doesn't have flashy flashlight
+- Disabled scanlist editing holding down 5 because often accidentally triggered
+- Carefully chosen custom features
+    - FMRadio
+    - Rescueops without flashy flashlight
+    - Removed VOX, aircopy, spectrum, serial viewer and narrower bandwidth
+
+Builds fine on Debian 13 using gcc-arm-none-eabi from official repos, python3-crc-something needed also intalling (it'll complain on packing step).
+Just running `make clean && make`. Docker things are not tested so may or may not work.
+
+Below is Armel/F4HWN original readme.
 
 # Open re-implementation of the Quansheng UV-K5/K6/5R v2.1.27 firmware
 
@@ -9,7 +26,7 @@ This repository is a fork of [Egzumer custom firmware](https://github.com/egzume
 All is a cloned and customized version of DualTachyon's open firmware found [here](https://github.com/DualTachyon/uv-k5-firmware) ... a cool achievement !
 
 > [!NOTE]
-> EN - About Chirp, as many others firmwares, you need to use a dedicated driver available on [this repository](https://github.com/armel/uv-k5-chirp-driver). 
+> EN - About Chirp, as many others firmwares, you need to use a dedicated driver available on [this repository](https://github.com/armel/uv-k5-chirp-driver).
 >
 > _FR - A propos de Chirp, comme beaucoup d'autres firmwares, vous devez utiliser un pilote dédié disponible sur [ce dépôt](https://github.com/armel/uv-k5-chirp-driver)._
 
@@ -20,7 +37,7 @@ Anyway, have fun.
 > _FR - CE FIRMWARE N'A PAS DE VÉRITABLE CERVEAU. VEUILLEZ UTILISER LE VÔTRE. Utilisez ce firmware à vos risques et périls. Il n'y a absolument aucune garantie qu'il fonctionnera d'une manière ou d'une autre sur votre (vos) radio(s), il peut même bousiller votre (vos) radio(s), dans ce cas, vous devrez acheter une autre radio. Quoi qu'il en soit, amusez-vous bien._
 
 > [!CAUTION]
-> EN - I recommend to backup your eeprom with [k5prog](https://github.com/sq5bpf/k5prog) before playing with alternative firmwares. It's a good reflex to have. 
+> EN - I recommend to backup your eeprom with [k5prog](https://github.com/sq5bpf/k5prog) before playing with alternative firmwares. It's a good reflex to have.
 >
 > _FR - Je recommande de sauvegarder votre eeprom avec [k5prog](https://github.com/sq5bpf/k5prog) avant de jouer avec des firmwares alternatifs. C'est un bon réflexe à avoir._
 
@@ -49,23 +66,23 @@ Special thanks to Jean-Cyrille F6IWW (2 times), Fabrice 14RC123, David F4BPP, Ol
     * Basic (with spectrum analyzer and commercial FM radios support, but without certain functions such as Vox, Aircopy, etc.),
     * RescueOps (specifically designed for first responders: firefighters, sea rescue, mountain rescue),
     * Game (with a small breakout game),
-* improve default power settings level: 
-    * Low1 to Low5 (<~20mW, ~125mW, ~250mW, ~500mW, ~1W), 
-    * Mid ~2W, 
+* improve default power settings level:
+    * Low1 to Low5 (<~20mW, ~125mW, ~250mW, ~500mW, ~1W),
+    * Mid ~2W,
     * High ~5W,
     * User (see SetPwr),
 * improve S-Meter (IARU Region 1 Technical Recommendation R.1 for VHF/UHF - [read more](https://hamwaves.com/decibel/en/)),
-   * S-Meter (S0/S9) Level EEPROM settings that were introduced in the Egzumer firmware are now ignored and replaced by hardcoded values to comply with the IARU Recommendation.     
+   * S-Meter (S0/S9) Level EEPROM settings that were introduced in the Egzumer firmware are now ignored and replaced by hardcoded values to comply with the IARU Recommendation.
 * improve bandscope (Spectrum Analyser):
     * add channel name,
     * add save of some spectrum parameters,
-* improve UI: 
+* improve UI:
     * menu index is always visible, even if a menu is selected,
-    * s-meter new design (Classic or Tiny), 
-    * MAIN ONLY screen mode, 
-    * DUAL and CROSS screen mode, 
-    * RX blink on VFO RX, 
-    * RX LED blink, 
+    * s-meter new design (Classic or Tiny),
+    * MAIN ONLY screen mode,
+    * DUAL and CROSS screen mode,
+    * RX blink on VFO RX,
+    * RX LED blink,
     * Squelch level and Monitor,
     * Step value,
     * CTCSS or DCS value,
@@ -102,7 +119,7 @@ Special thanks to Jean-Cyrille F6IWW (2 times), Fabrice 14RC123, David F4BPP, Ol
     * add HAM CA F Lock band (for Canadian zone),
     * add PMR 446 F Lock band,
     * add FRS/GMRS/MURS F Lock band,
-    * remove blink and SOS functionality, 
+    * remove blink and SOS functionality,
     * remove AM Fix menu (AM Fix is ENABLED by default),
     * add support of 3500mAh battery,
 * improve status bar:
@@ -125,7 +142,7 @@ Special thanks to Jean-Cyrille F6IWW (2 times), Fabrice 14RC123, David F4BPP, Ol
 * new actions:
     * RX MODE,
     * MAIN ONLY,
-    * PTT, 
+    * PTT,
     * WIDE NARROW,
     * 1750Hz,
     * MUTE,
@@ -139,10 +156,10 @@ Special thanks to Jean-Cyrille F6IWW (2 times), Fabrice 14RC123, David F4BPP, Ol
     * add long press on MENU, in * SCAN mode, to temporarily exclude a memory channel,
     * add short press on [0, 1, 2, 3, 4 or 5], in * SCAN mode, to dynamically change scan list.
 * many fix:
-    * squelch, 
+    * squelch,
     * s-meter,
-    * DTMF overlaying, 
-    * scan list 2 ignored, 
+    * DTMF overlaying,
+    * scan list 2 ignored,
     * scan range limit,
     * clean display on startup,
     * no more PWM noise,
@@ -235,8 +252,8 @@ This is the least demanding option as you don't have to install enything on your
     - `./compile-with-docker.sh bandscope` to compile bandscope version
     - `./compile-with-docker.sh broadcast` to compile broadcast version
     - `./compile-with-docker.sh voxless` to compile voxless version
-    - `./compile-with-docker.sh all` to compile all versions 
-    - `./compile-with-docker.sh custom` to compile only with Makefile build options   
+    - `./compile-with-docker.sh all` to compile all versions
+    - `./compile-with-docker.sh custom` to compile only with Makefile build options
 1. Open folder `compiled-firmware`
 1. Right click `firmware.packed.bin`
 1. Click `Download`, now you should have a firmware on your computer that you can proceed to flash on your radio. You can use [online flasher](https://egzumer.github.io/uvtools)
@@ -245,7 +262,7 @@ This is the least demanding option as you don't have to install enything on your
 
 ### Docker build method
 
-If you have docker installed you can use [compile-with-docker.bat](./compile-with-docker.bat) (Windows) or [compile-with-docker.sh](./compile-with-docker.sh) (Linux/Mac), the output files are created in `compiled-firmware` folder. This method gives significantly smaller binaries, I've seen differences up to 1kb, so it can fit more functionalities this way. The challenge can be (or not) installing docker itself. 
+If you have docker installed you can use [compile-with-docker.bat](./compile-with-docker.bat) (Windows) or [compile-with-docker.sh](./compile-with-docker.sh) (Linux/Mac), the output files are created in `compiled-firmware` folder. This method gives significantly smaller binaries, I've seen differences up to 1kb, so it can fit more functionalities this way. The challenge can be (or not) installing docker itself.
 
 > [!TIP]
 > On Linux/Mac, you may need to uncomment and customize the DOCKER_NETWORK environment variable at the beginning of the [compile-with-docker.sh](./compile-with-docker.sh) script. Note: this can introduce security risks by removing network isolation. However, if you encounter issues and are using a specific network environment (with a proxy or a firewall), this may help.

@@ -52,7 +52,6 @@ custom() {
     echo "🔧 Compiling Custom..."
     docker run -v "$FIRMWARE_DIR:/app/compiled-firmware" "$IMAGE_NAME" /bin/bash -c "\
         rm -f ./compiled-firmware/* && cd /app && make -s \
-        EDITION_STRING=Custom \
         TARGET=f4hwn.custom \
         && cp f4hwn.custom* compiled-firmware/"
 }
@@ -187,6 +186,7 @@ case "$1" in
         basic
         rescueops
         game
+        custom
         ;;
     *)
         echo "Usage: BASE=alpine:<tag> $0 {clean|custom|standard|bandscope|broadcast|basic|rescueops|game|all}"

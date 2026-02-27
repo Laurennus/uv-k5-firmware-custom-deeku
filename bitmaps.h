@@ -51,8 +51,11 @@ extern const uint8_t BITMAP_compand[6];
 
 extern const uint8_t BITMAP_NOAA[12];
 
-#ifndef ENABLE_CUSTOM_MENU_LAYOUT
-    extern const uint8_t BITMAP_CurrentIndicator[8];
+#if !defined(ENABLE_CUSTOM_MENU_LAYOUT) && !defined(ENABLE_CUSTOM_MENU_DEEKU)
+extern const uint8_t BITMAP_CurrentIndicatorTop[8];
+extern const uint8_t BITMAP_CurrentIndicatorBot[8];
+#elif defined(ENABLE_CUSTOM_MENU_DEEKU)
+extern const uint8_t BITMAP_CurrentIndicator[8];
 #endif
 
 #endif

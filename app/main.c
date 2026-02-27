@@ -46,7 +46,7 @@
 #include "ui/inputbox.h"
 #include "ui/ui.h"
 #include <stdlib.h>
-
+/*
 static void toggle_chan_scanlist(void)
 {   // toggle the selected channels scanlist setting
 
@@ -62,7 +62,7 @@ static void toggle_chan_scanlist(void)
 #endif
         return;
     }
-    
+
     // Remove exclude
     if(gMR_ChannelExclude[gTxVfo->CHANNEL_SAVE] == true)
     {
@@ -82,7 +82,7 @@ static void toggle_chan_scanlist(void)
 
     gVfoConfigureMode = VFO_CONFIGURE;
     gFlagResetVfos    = true;
-}
+}*/
 
 static void processFKeyFunction(const KEY_Code_t Key, const bool beep)
 {
@@ -221,8 +221,8 @@ static void processFKeyFunction(const KEY_Code_t Key, const bool beep)
             break;
 
         case KEY_5:
-            if(beep) {
 #ifdef ENABLE_NOAA
+            if(beep) {
                 if (!IS_NOAA_CHANNEL(gTxVfo->CHANNEL_SAVE)) {
                     gEeprom.ScreenChannel[Vfo] = gEeprom.NoaaChannel[gEeprom.TX_VFO];
                 }
@@ -237,11 +237,8 @@ static void processFKeyFunction(const KEY_Code_t Key, const bool beep)
 #elif defined(ENABLE_SPECTRUM)
                 APP_RunSpectrum();
                 gRequestDisplayScreen = DISPLAY_MAIN;
+            }
 #endif
-            }
-            else {
-                toggle_chan_scanlist();
-            }
 
             break;
 

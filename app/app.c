@@ -1410,7 +1410,7 @@ void APP_TimeSlice10ms(void)
         return;
 #endif
 
-#if !defined(ENABLE_FEAT_F4HWN) || defined(ENABLE_FEAT_F4HWN_RESCUE_OPS)
+#if !defined(ENABLE_FEAT_F4HWN) || (defined(ENABLE_FEAT_F4HWN_RESCUE_OPS) && !defined(DISABLE_FEAT_ROPS_FLASH))
     #ifdef ENABLE_FLASHLIGHT
         FlashlightTimeSlice();
     #endif
@@ -1632,11 +1632,11 @@ void APP_TimeSlice500ms(void)
         }
         else if(gSleepModeCountdown_500ms != 0 && gSleepModeCountdown_500ms < 21 && gSetting_set_off != 0)
         {
-            if(gSleepModeCountdown_500ms % 4 == 0)
-            {
-                PWM_PLUS0_CH0_COMP = value[gEeprom.BACKLIGHT_MAX] * 4; // Max brightness
-            }
-            else
+            // if(gSleepModeCountdown_500ms % 4 == 0)
+            // {
+            //     PWM_PLUS0_CH0_COMP = value[gEeprom.BACKLIGHT_MAX] * 4; // Max brightness
+            // }
+            // else
             {
                 PWM_PLUS0_CH0_COMP = 0;
             }

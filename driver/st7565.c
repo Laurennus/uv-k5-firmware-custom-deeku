@@ -29,7 +29,7 @@ uint8_t gStatusLine[LCD_WIDTH];
 uint8_t gFrameBuffer[FRAME_LINES][LCD_WIDTH];
 
 static void DrawLine(uint8_t column, uint8_t line, const uint8_t * lineBuffer, unsigned size_defVal)
-{   
+{
     ST7565_SelectColumnAndLine(column + 4, line);
     GPIO_SetBit(&GPIOB->DATA, GPIOB_PIN_ST7565_A0);
     for (unsigned i = 0; i < size_defVal; i++) {
@@ -170,10 +170,10 @@ const uint8_t ST7565_CMD_SET_EV = 0x81;
 // VF: Built-in Follower
 const uint8_t ST7565_CMD_POWER_CIRCUIT = 0x28;
 // Set display start line 0-63
-// 0 0 0 1 S5 S4 S3 S2 S1 S0 
+// 0 0 0 1 S5 S4 S3 S2 S1 S0
 const uint8_t ST7565_CMD_SET_START_LINE = 0x40;
-// Display ON/OFF 
-// 0 0 1 0 1 0 1 1 1 D 
+// Display ON/OFF
+// 0 0 1 0 1 0 1 1 1 D
 // D=1, display ON
 // D=0, display OFF
 const uint8_t ST7565_CMD_DISPLAY_ON_OFF = 0xAE;
@@ -189,7 +189,7 @@ uint8_t cmds[] = {
     ST7565_CMD_SET_EV,                      // Set contrast
     31,
 
-    ST7565_CMD_POWER_CIRCUIT | 0b111,       // Built-in power circuit ON/OFF: VB=1 VR=1 VF=1 
+    ST7565_CMD_POWER_CIRCUIT | 0b111,       // Built-in power circuit ON/OFF: VB=1 VR=1 VF=1
     ST7565_CMD_SET_START_LINE | 0,          // Set Start Line: 0
     ST7565_CMD_DISPLAY_ON_OFF | 1,          // Display ON/OFF: ON
 };
@@ -229,21 +229,34 @@ uint8_t cmds[] = {
     #if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
     void ST7565_Gauge(uint8_t line, uint8_t min, uint8_t max, uint8_t value)
     {
+        #ifdef ENABLE_CUSTOM_MENU_DEEKU
+        gFrameBuffer[line][6] = 0x0c;
+        gFrameBuffer[line][7] = 0x12;
+        #else
         gFrameBuffer[line][54] = 0x0c;
         gFrameBuffer[line][55] = 0x12;
+        #endif
 
         gFrameBuffer[line][121] = 0x12;
         gFrameBuffer[line][122] = 0x0c;
 
+        #ifdef ENABLE_CUSTOM_MENU_DEEKU
+        uint8_t filled = map(value, min, max, 8, 120);
+
+        for (uint8_t i = 8; i <= 120; i++) {
+            gFrameBuffer[line][i] = (i <= filled) ? 0x2d : 0x21;
+        }
+        #else
         uint8_t filled = map(value, min, max, 56, 120);
 
         for (uint8_t i = 56; i <= 120; i++) {
             gFrameBuffer[line][i] = (i <= filled) ? 0x2d : 0x21;
         }
+        #endif
     }
     #endif
 #endif
-    
+
 void ST7565_Init(void)
 {
     SPI0_Init();
@@ -270,7 +283,7 @@ void ST7565_Init(void)
         ST7565_WriteByte(ST7565_CMD_POWER_CIRCUIT | 0b111);   // VB=1 VR=1 VF=1
 
     SYSTEM_DelayMs(40);
-    
+
     ST7565_WriteByte(ST7565_CMD_SET_START_LINE | 0);   // line 0
     ST7565_WriteByte(ST7565_CMD_DISPLAY_ON_OFF | 1);   // D=1
     SPI_WaitForUndocumentedTxFifoStatusBit();

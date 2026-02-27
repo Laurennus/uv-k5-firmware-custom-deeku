@@ -45,7 +45,7 @@ const freq_band_table_t frequencyBandTable[] =
         [BAND6_400MHz]={.lower = 40000000,  .upper = 47000000}
 };
 
-#ifdef ENABLE_NOAA
+#if defined(ENABLE_NOAA) && !defined(NOAA_AS_PMR446)
     const uint32_t NoaaFrequencyTable[10] =
     {
         16255000,
@@ -58,6 +58,21 @@ const freq_band_table_t frequencyBandTable[] =
         16152500,
         16177500,
         16327500
+    };
+#elif defined(ENABLE_NOAA) && defined(NOAA_AS_PMR446)
+
+    const uint32_t NoaaFrequencyTable[10] =
+    {
+        44600625,
+        44601875,
+        44603125,
+        44604375,
+        44605625,
+        44606875,
+        44608125,
+        44609375,
+        44610625,
+        44611875
     };
 #endif
 
