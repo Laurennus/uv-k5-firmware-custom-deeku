@@ -17,6 +17,10 @@ Please note this is for v1 of the radio chip and will brick v2 and v3 machines!
 Builds fine on Debian 13 using gcc-arm-none-eabi from official repos, python3-crc-something needed also intalling (it'll complain on packing step).
 Just running `make clean && make`. Docker things are not tested so may or may not work.
 
+
+<img src="images/IMG_20260122_161234011.jpg" alt="screenshot of overhauled menu" width=500 />
+
+
 Below is Armel/F4HWN original readme.
 
 # Open re-implementation of the Quansheng UV-K5/K6/5R v2.1.27 firmware
