@@ -518,17 +518,8 @@ void UI_DisplayMenu(void)
     // invert the current menu list item pixels
     for (i = 0; i < (8 * menu_list_width) - 16; i++)
     {
-        gFrameBuffer[1][i] ^= 0xFF;
+        gFrameBuffer[1][i] ^= 0xFE;
     }
-
-    // Submenu indicator
-    if (gIsInSubMenu)
-        memcpy(gFrameBuffer[2] + 117, BITMAP_CurrentIndicator, sizeof(BITMAP_CurrentIndicator));
-
-    // Current menu index and separator
-    UI_DrawLineBuffer(gFrameBuffer, 0, 23, 126, 23, 1);
-    sprintf(String, "%2u", 1 + gMenuCursor);
-    UI_PrintStringSmallNormal(String, 114, 0, 1);
 
 
     // **************
@@ -1282,6 +1273,15 @@ void UI_DisplayMenu(void)
         char *pPrintStr = (gAskForConfirmation == 1) ? "SURE?" : "WAIT!";
         UI_PrintString(pPrintStr, menu_item_x1, menu_item_x2, 5, 8);
     }
+
+    // Submenu indicator
+    if (gIsInSubMenu)
+        memcpy(gFrameBuffer[2] + 117, BITMAP_CurrentIndicator, sizeof(BITMAP_CurrentIndicator));
+
+    // Current menu index and separator
+    UI_DrawLineBuffer(gFrameBuffer, 0, 24, 127, 24, 1);
+    sprintf(String, "%2u", 1 + gMenuCursor);
+    UI_PrintStringSmallNormal(String, 114, 0, 1);
 
     ST7565_BlitFullScreen();
 }
