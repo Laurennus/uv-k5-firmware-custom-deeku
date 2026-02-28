@@ -61,6 +61,7 @@
 #include "ui/lock.h"
 #include "ui/welcome.h"
 #include "ui/menu.h"
+#include "ui/helper.h"
 void _putchar(__attribute__((unused)) char c)
 {
 
@@ -335,6 +336,8 @@ void Main(void)
     #endif
     */
 
+    UI_DisplayClear();
+
     #ifdef ENABLE_FEAT_F4HWN_RESUME_STATE
         if (gEeprom.CURRENT_STATE == 2 || gEeprom.CURRENT_STATE == 5) {
             gScanRangeStart = gScanRangeStart ? 0 : gTxVfo->pRX->Frequency;
@@ -363,7 +366,7 @@ void Main(void)
         }
         #endif
     #endif
-        
+
     while (true) {
         APP_Update();
 
