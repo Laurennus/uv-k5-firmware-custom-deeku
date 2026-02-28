@@ -229,30 +229,17 @@ uint8_t cmds[] = {
     #if !defined(ENABLE_SPECTRUM) || !defined(ENABLE_FMRADIO)
     void ST7565_Gauge(uint8_t line, uint8_t min, uint8_t max, uint8_t value)
     {
-        #ifdef ENABLE_CUSTOM_MENU_DEEKU
         gFrameBuffer[line][6] = 0x0c;
         gFrameBuffer[line][7] = 0x12;
-        #else
-        gFrameBuffer[line][54] = 0x0c;
-        gFrameBuffer[line][55] = 0x12;
-        #endif
 
         gFrameBuffer[line][121] = 0x12;
         gFrameBuffer[line][122] = 0x0c;
 
-        #ifdef ENABLE_CUSTOM_MENU_DEEKU
         uint8_t filled = map(value, min, max, 8, 120);
 
         for (uint8_t i = 8; i <= 120; i++) {
             gFrameBuffer[line][i] = (i <= filled) ? 0x2d : 0x21;
         }
-        #else
-        uint8_t filled = map(value, min, max, 56, 120);
-
-        for (uint8_t i = 56; i <= 120; i++) {
-            gFrameBuffer[line][i] = (i <= filled) ? 0x2d : 0x21;
-        }
-        #endif
     }
     #endif
 #endif

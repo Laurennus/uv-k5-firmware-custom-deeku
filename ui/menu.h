@@ -24,11 +24,7 @@
 #include "settings.h"
 
 typedef struct {
-    #if defined(ENABLE_CUSTOM_MENU_DEEKU)
     const char  name[17];    // menu display area only has room for 6 characters
-    #else
-    const char  name[6];    // menu display area only has room for 6 characters
-    #endif
     uint8_t     menu_id;
 } t_menu_item;
 
