@@ -52,7 +52,7 @@ void UI_DisplayWelcome(void)
     char WelcomeString0[16];
     char WelcomeString1[16];
     char WelcomeString2[16];
-    char WelcomeString3[20];
+    //char WelcomeString3[20];
 
     memset(gStatusLine,  0, sizeof(gStatusLine));
 
@@ -64,7 +64,7 @@ void UI_DisplayWelcome(void)
 #ifdef ENABLE_FEAT_F4HWN
     ST7565_BlitStatusLine();
     ST7565_BlitFullScreen();
-    
+
     if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_NONE || gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_SOUND) {
         ST7565_FillScreen(0x00);
 #else
@@ -130,8 +130,9 @@ void UI_DisplayWelcome(void)
             gFrameBuffer[4][i] ^= 0xFF;
         }
 
-        sprintf(WelcomeString3, "%s Edition", Edition);
-        UI_PrintStringSmallNormal(WelcomeString3, 0, 127, 6);
+        //sprintf(WelcomeString3, "%s Edition", Edition);
+        //UI_PrintStringSmallNormal(WelcomeString3, 0, 127, 6);
+        UI_PrintStringSmallNormal(Edition, 0, 127, 6);
 
         /*
         #ifdef ENABLE_FEAT_F4HWN_RESCUE_OPS
@@ -142,12 +143,12 @@ void UI_DisplayWelcome(void)
                 }
                 else
                 {
-                    memcpy(gFrameBuffer[6] + 103, BITMAP_NotReady, sizeof(BITMAP_NotReady));                    
+                    memcpy(gFrameBuffer[6] + 103, BITMAP_NotReady, sizeof(BITMAP_NotReady));
                 }
             #else
                 UI_PrintStringSmallNormal(Edition, 18, 0, 5);
                 memcpy(gFrameBuffer[5] + 103, BITMAP_Ready, sizeof(BITMAP_Ready));
-                
+
                 #ifdef ENABLE_FEAT_F4HWN_RESCUE_OPS
                     UI_PrintStringSmallNormal("RescueOps", 18, 0, 6);
                     if(gEeprom.MENU_LOCK == true) {
@@ -161,7 +162,7 @@ void UI_DisplayWelcome(void)
             #endif
         #else
             UI_PrintStringSmallNormal(Edition, 18, 0, 6);
-            memcpy(gFrameBuffer[6] + 103, BITMAP_Ready, sizeof(BITMAP_Ready));                    
+            memcpy(gFrameBuffer[6] + 103, BITMAP_Ready, sizeof(BITMAP_Ready));
         #endif
         */
 
