@@ -993,6 +993,12 @@ void UI_DisplayMain(void)
                             if (isMainOnly())
                             {
                                 UI_PrintString(String, 32, 0, line, 8);
+                                // invert vfo namelines
+                                for (int i = 0; i < LCD_WIDTH; i++)
+                                {
+                                    gFrameBuffer[line][i] ^= 0xFE;
+                                    gFrameBuffer[line+1][i] ^= 0xFF;
+                                }
                             }
                             else
                             {
