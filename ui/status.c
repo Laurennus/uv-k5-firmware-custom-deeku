@@ -36,7 +36,7 @@
 
 #ifdef ENABLE_FEAT_F4HWN_RX_TX_TIMER
 #ifndef ENABLE_FEAT_F4HWN_DEBUG
-static void convertTime(uint8_t *line, uint8_t type) 
+static void convertTime(uint8_t *line, uint8_t type)
 {
     uint16_t t = (type == 0) ? (gTxTimerCountdown_500ms / 2) : (3600 - gRxTimerCountdown_500ms / 2);
 
@@ -98,7 +98,7 @@ void UI_DisplayStatus()
                     case 0:
                         memcpy(line + 0, BITMAP_ScanList0, sizeof(BITMAP_ScanList0));
                         break;
-                    case 1: 
+                    case 1:
                         memcpy(line + 0, BITMAP_ScanList1, sizeof(BITMAP_ScanList1));
                         break;
                     case 2:
@@ -202,7 +202,7 @@ void UI_DisplayStatus()
     else
     {
         memcpy(line + x, gFontPttClassic, sizeof(gFontPttClassic));
-        x1 = x + sizeof(gFontPttClassic) + 1;       
+        x1 = x + sizeof(gFontPttClassic) + 1;
     }
     x += sizeof(gFontPttClassic) + 3;
 #endif
@@ -288,6 +288,12 @@ void UI_DisplayStatus()
     }
 
     // **************
+
+    // invert
+    for (int i = 0; i < LCD_WIDTH; i++)
+    {
+        gStatusLine[i] ^= 0xFF;
+    }
 
     ST7565_BlitStatusLine();
 }
