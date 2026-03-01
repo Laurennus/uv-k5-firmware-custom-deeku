@@ -62,16 +62,16 @@ void ST7565_DrawLine(const unsigned int Column, const unsigned int Line, const u
 
         if(line == 0)
         {
-            DrawLine(0, 0, gStatusLine, LCD_WIDTH);
+            DrawLine(0, FRAME_LINES, gStatusLine, LCD_WIDTH);
         }
         else if(line <= FRAME_LINES)
         {
-            DrawLine(0, line, gFrameBuffer[line - 1], LCD_WIDTH);
+            DrawLine(0, line-1, gFrameBuffer[line - 1], LCD_WIDTH);
         }
         else
         {
             for (line = 1; line <= FRAME_LINES; line++) {
-                DrawLine(0, line, gFrameBuffer[line - 1], LCD_WIDTH);
+                DrawLine(0, line-1, gFrameBuffer[line - 1], LCD_WIDTH);
             }
         }
 
@@ -115,7 +115,7 @@ void ST7565_DrawLine(const unsigned int Column, const unsigned int Line, const u
     {   // the top small text line on the display
         SPI_ToggleMasterMode(&SPI0->CR, false);
         ST7565_WriteByte(0x40);    // start line ?
-        DrawLine(0, 0, gStatusLine, LCD_WIDTH);
+        DrawLine(0, FRAME_LINES, gStatusLine, LCD_WIDTH);
         SPI_ToggleMasterMode(&SPI0->CR, true);
     }
 #endif

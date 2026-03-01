@@ -279,6 +279,8 @@ void UI_DisplayStatus()
     }
 
     // **************
+    for (int i=0; i<LCD_WIDTH; i++)
+        line[i] |= 0x01;
 
     ST7565_BlitStatusLine();
 }
