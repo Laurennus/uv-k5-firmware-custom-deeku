@@ -40,9 +40,9 @@ void UI_DrawBattery(uint8_t* bitmap, uint8_t level, uint8_t blink)
 
     for (int i = 0; i < bars; i++) {
 #ifndef ENABLE_REVERSE_BAT_SYMBOL
-        memcpy(bitmap + sizeof(BITMAP_BatteryLevel1) - 4 - (i * 3), BITMAP_BatteryLevel, 2);
+        memcpy(bitmap + sizeof(BITMAP_BatteryLevel1) - 4 - (i * 3), BITMAP_BatteryLevel, 3);
 #else
-        memcpy(bitmap + 3 + (i * 3) + 0, BITMAP_BatteryLevel, 2);
+        memcpy(bitmap + 3 + (i * 3) + 0, BITMAP_BatteryLevel, 3);
 #endif
     }
 }

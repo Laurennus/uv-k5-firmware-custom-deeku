@@ -4,22 +4,31 @@
 // all these images are on their right sides
 // turn your monitor 90-deg anti-clockwise to see the images
 
-const uint8_t gFontKeyLock[9] =
+const uint8_t gFontKeyLock[10] =
 {
-    0x7c, 0x46, 0x45, 0x45, 0x45, 0x45, 0x45, 0x46, 0x7c
+    0b00011000,
+    0b00100100,
+    0b00100100,
+    0b00011000,
+    0b00001000,
+    0b00001000,
+    0b00001000,
+    0b00011000,
+    0b00001000,
+    0b00011000
 };
 
 const uint8_t gFontLight[9] =
 {
-    0b00001100,
-    0b00010010,
-    0b00100001,
-    0b01101101,
-    0b01111001,
-    0b01101101,
-    0b00100001,
-    0b00010010,
-    0b00001100,
+    0b00000000,
+    0b00011100,
+    0b00100010,
+    0b01101010,
+    0b01110010,
+    0b01101010,
+    0b00100010,
+    0b00011100,
+    0b00000000,
 };
 
 const uint8_t gFontMute[12] =
@@ -38,32 +47,33 @@ const uint8_t gFontMute[12] =
     0b00100010,
 };
 
-const uint8_t BITMAP_BatteryLevel[2] =
+const uint8_t BITMAP_BatteryLevel[3] =
 {
-    0b01011101,
-    0b01011101
+    0b01111100,
+    0b01111100,
+    0b01111100
 };
 
 // Quansheng way (+ pole to the left)
 const uint8_t BITMAP_BatteryLevel1[17] =
 {
     0b00000000,
-    0b00111110,
-    0b00100010,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01000001,
-    0b01111111
+    0b00111000,
+    0b00111000,
+    0b01000100,
+    0b01000100,
+    0b01100100,
+    0b01000100,
+    0b01000100,
+    0b01100100,
+    0b01000100,
+    0b01000100,
+    0b01100100,
+    0b01000100,
+    0b01000100,
+    0b01100100,
+    0b01000100,
+    0b00111000
 };
 
 const uint8_t BITMAP_USB_C[9] =
@@ -96,7 +106,7 @@ const uint8_t BITMAP_Antenna[5] =
     0b00000011
 };
 
-const uint8_t BITMAP_VFO_Lock[7] =
+const uint8_t BITMAP_VFO_Lock[10] =
 {
     0b00011000,
     0b00100100,
@@ -104,7 +114,10 @@ const uint8_t BITMAP_VFO_Lock[7] =
     0b00011000,
     0b00001000,
     0b00001000,
+    0b00001000,
     0b00011000,
+    0b00001000,
+    0b00011000
 };
 
 const uint8_t BITMAP_VFO_Default[7] =

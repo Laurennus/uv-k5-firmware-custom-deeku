@@ -4,11 +4,11 @@
 
 #include <stdint.h>
 
-extern const uint8_t gFontKeyLock[9];
+extern const uint8_t gFontKeyLock[10];
 extern const uint8_t gFontLight[9];
 extern const uint8_t gFontMute[12];
 
-extern const uint8_t BITMAP_BatteryLevel[2];
+extern const uint8_t BITMAP_BatteryLevel[3];
 extern const uint8_t BITMAP_BatteryLevel1[17];
 extern const uint8_t BITMAP_USB_C[9];
 
@@ -24,7 +24,7 @@ extern const uint8_t BITMAP_NotReady[7];
 extern const uint8_t BITMAP_Antenna[5];
 extern const uint8_t BITMAP_VFO_Default[7];
 extern const uint8_t BITMAP_VFO_NotDefault[7];
-extern const uint8_t BITMAP_VFO_Lock[7];
+extern const uint8_t BITMAP_VFO_Lock[10];
 extern const uint8_t BITMAP_ScanList0[7];
 extern const uint8_t BITMAP_ScanList1[5];
 extern const uint8_t BITMAP_ScanList2[7];
