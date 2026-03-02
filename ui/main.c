@@ -1250,7 +1250,7 @@ void UI_DisplayMain(void)
             }
             else
             {
-                const char pwr_long[][5] = {"LOW1", "LOW2", "LOW3", "LOW4", "LOW5", "MID", "HIGH"};
+                const char pwr_long[][5] = {"<20m", "125m", "250m", "500m", "1W", "2W", "5W"};
                 //sprintf(String, "%s", pwr_long[currentPower]);
                 //GUI_DisplaySmallest(String, 24, line == 0 ? 17 : 49, false, true);
                 GUI_DisplaySmallest(pwr_long[currentPower], 24, line == 0 ? 17 : 49, false, true);
