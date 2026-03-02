@@ -52,7 +52,9 @@ static void ACTION_Scan_FM(bool bRestart);
 
 #if defined(ENABLE_ALARM) || defined(ENABLE_TX1750)
 static void ACTION_AlarmOr1750(bool b1750);
+#ifdef ENABLE_ALARM
 inline static void ACTION_Alarm() { ACTION_AlarmOr1750(false); }
+#endif
 inline static void ACTION_1750() { ACTION_AlarmOr1750(true); };
 #endif
 
@@ -440,11 +442,11 @@ static void ACTION_AlarmOr1750(const bool b1750)
     #endif
 
     #if defined(ENABLE_ALARM) && defined(ENABLE_TX1750)
-        gAlarmState = b1750 ? ALARM_STATE_TX1750 : alarm_mode;
+    gAlarmState = b1750 ? ALARM_STATE_TX1750 : alarm_mode;
     #elif defined(ENABLE_ALARM)
-        gAlarmState = alarm_mode;
+    gAlarmState = alarm_mode;
     #else
-        gAlarmState = ALARM_STATE_TX1750;
+    gAlarmState = ALARM_STATE_TX1750;
     #endif
 
     (void)b1750;
@@ -497,15 +499,12 @@ void ACTION_RxMode(void)
 {
     static bool cycle = 0;
 
-    switch(cycle) {
-        case 0:
-            gEeprom.DUAL_WATCH = !gEeprom.DUAL_WATCH;
-            cycle = 1;
-            break;
-        case 1:
-            gEeprom.CROSS_BAND_RX_TX = !gEeprom.CROSS_BAND_RX_TX;
-            cycle = 0;
-            break;
+    if (!cycle) {
+        gEeprom.DUAL_WATCH = !gEeprom.DUAL_WATCH;
+        cycle = 1;
+    } else {
+        gEeprom.CROSS_BAND_RX_TX = !gEeprom.CROSS_BAND_RX_TX;
+        cycle = 0;
     }
 
     ACTION_Update();
@@ -517,20 +516,17 @@ void ACTION_MainOnly(void)
     static uint8_t dw = 0;
     static uint8_t cb = 0;
 
-    switch(cycle) {
-        case 0:
-            dw = gEeprom.DUAL_WATCH;
-            cb = gEeprom.CROSS_BAND_RX_TX;
+    if (!cycle) {
+        dw = gEeprom.DUAL_WATCH;
+        cb = gEeprom.CROSS_BAND_RX_TX;
 
-            gEeprom.DUAL_WATCH = 0;
-            gEeprom.CROSS_BAND_RX_TX = 0;
-            cycle = 1;
-            break;
-        case 1:
-            gEeprom.DUAL_WATCH = dw;
-            gEeprom.CROSS_BAND_RX_TX = cb;
-            cycle = 0;
-            break;
+        gEeprom.DUAL_WATCH = 0;
+        gEeprom.CROSS_BAND_RX_TX = 0;
+        cycle = 1;
+    } else {
+        gEeprom.DUAL_WATCH = dw;
+        gEeprom.CROSS_BAND_RX_TX = cb;
+        cycle = 0;
     }
 
     ACTION_Update();
@@ -624,7 +620,7 @@ void ACTION_BackLightOnDemand(void)
             gEeprom.BACKLIGHT_TIME = 61;
         }
     }
-    
+
     BACKLIGHT_TurnOn();
 }
 

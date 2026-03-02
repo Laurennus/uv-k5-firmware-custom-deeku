@@ -235,7 +235,7 @@ ifeq ($(ENABLE_CLANG),0)
 #	LD += arm-none-eabi-gcc
 else
 #	May need to adjust this to match your system
-	CC = clang --sysroot=/usr/arm-none-eabi --target=arm-none-eabi
+	CC = clang --sysroot=/usr/lib/arm-none-eabi --target=arm-none-eabi
 #	Bloats binaries to 512MB
 #	LD = ld.lld
 endif
