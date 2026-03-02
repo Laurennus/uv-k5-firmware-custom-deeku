@@ -43,36 +43,36 @@
 const t_menu_item MenuList[] =
 {
 //   text,          menu ID
-    {"Tuning Step",        MENU_STEP          },
+    {"Step",        MENU_STEP          },
     {"Power",       MENU_TXP           }, // was "TXP"
     {"Rx DCS",       MENU_R_DCS         }, // was "R_DCS"
     {"Rx CTCS",      MENU_R_CTCS        }, // was "R_CTCS"
     {"Tx DCS",       MENU_T_DCS         }, // was "T_DCS"
     {"Tx CTCS",      MENU_T_CTCS        }, // was "T_CTCS"
-    {"Tx Offset Dir",      MENU_SFT_D         }, // was "SFT_D"
-    {"Tx Offset",      MENU_OFFSET        }, // was "OFFSET"
-    {"Wide/Narrow",         MENU_W_N           },
+    {"Duplex",      MENU_SFT_D         }, // was "SFT_D"
+    {"Offset",      MENU_OFFSET        }, // was "OFFSET"
+    {"Wide/Nar",         MENU_W_N           },
 #ifndef ENABLE_FEAT_F4HWN
-    {"Scrambler",      MENU_SCR           }, // was "SCR"
+    {"Scramblr",      MENU_SCR           }, // was "SCR"
 #endif
-    {"Busy Ch Lockout",      MENU_BCL           }, // was "BCL"
-    {"Compander",      MENU_COMPAND       },
-    {"Mode AM/FM",        MENU_AM            }, // was "AM"
+    {"Busy Lck",      MENU_BCL           }, // was "BCL"
+    {"Compandr",      MENU_COMPAND       },
+    {"AM/FM",        MENU_AM            }, // was "AM"
 #ifdef ENABLE_FEAT_F4HWN
     {"TX Lock",      MENU_TX_LOCK       },
 #endif
-    {"Scanlist Add 1",      MENU_S_ADD1        },
-    {"Scanlist Add 2",      MENU_S_ADD2        },
-    {"Scanlist Add 3",      MENU_S_ADD3        },
-    {"Channel Save",      MENU_MEM_CH        }, // was "MEM-CH"
-    {"Channel Delete",      MENU_DEL_CH        }, // was "DEL-CH"
-    {"Channel Name",      MENU_MEM_NAME      },
+    {"Sl Add 1",      MENU_S_ADD1        },
+    {"Sl Add 2",      MENU_S_ADD2        },
+    {"Sl Add 3",      MENU_S_ADD3        },
+    {"Ch Save",      MENU_MEM_CH        }, // was "MEM-CH"
+    {"Ch Del",      MENU_DEL_CH        }, // was "DEL-CH"
+    {"Ch Name",      MENU_MEM_NAME      },
 
-    {"Scanlist",       MENU_S_LIST        },
-    {"Scanlist 1",      MENU_SLIST1        },
-    {"Scanlist 2",      MENU_SLIST2        },
-    {"Scanlist 3",      MENU_SLIST3        },
-    {"Scan Resume",      MENU_SC_REV        },
+    {"Slist",       MENU_S_LIST        },
+    {"Slist 1",      MENU_SLIST1        },
+    {"Slist 2",      MENU_SLIST2        },
+    {"Slist 3",      MENU_SLIST3        },
+    {"Scan Res",      MENU_SC_REV        },
 #ifndef ENABLE_FEAT_F4HWN
     #ifdef ENABLE_NOAA
         {"NOAA-S",      MENU_NOAA_S    },
@@ -84,25 +84,25 @@ const t_menu_item MenuList[] =
     {"F2 Long",      MENU_F2LONG        },
     {"M Long",      MENU_MLONG         },
 
-    {"Key Autolock",      MENU_AUTOLK        }, // was "AUTOLk"
-    {"Tx TimeOut Timer",      MENU_TOT           }, // was "TOT"
-    {"Battery Saver",      MENU_SAVE          }, // was "SAVE"
-    {"Battery Text",      MENU_BAT_TXT       },
+    {"Autolock",      MENU_AUTOLK        }, // was "AUTOLk"
+    {"Tx TOT",      MENU_TOT           }, // was "TOT"
+    {"Pwr Save",      MENU_SAVE          }, // was "SAVE"
+    {"Bat Text",      MENU_BAT_TXT       },
     {"Mic Gain",         MENU_MIC           },
     {"Mic Bar",      MENU_MIC_BAR       },
-    {"Channel Display",      MENU_MDF           }, // was "MDF"
-    {"PowerOn Message",      MENU_PONMSG        },
-    {"Backlight Off",      MENU_ABR           }, // was "ABR"
-    {"Backlight Min",       MENU_ABR_MIN       },
-    {"Backlight Max",       MENU_ABR_MAX       },
-    {"Backlight TxRx",      MENU_ABR_ON_TX_RX  },
+    {"Ch Dspl",      MENU_MDF           }, // was "MDF"
+    {"Pwr Msg",      MENU_PONMSG        },
+    {"Bl Off",      MENU_ABR           }, // was "ABR"
+    {"Bl Min",       MENU_ABR_MIN       },
+    {"Bl Max",       MENU_ABR_MAX       },
+    {"Bl TxRx",      MENU_ABR_ON_TX_RX  },
     {"Key Beep",        MENU_BEEP          },
 #ifdef ENABLE_VOICE
     {"Voice",       MENU_VOICE         },
 #endif
-    {"Roger Beep",       MENU_ROGER         },
-    {"SquelchTail Elim",         MENU_STE           },
-    {"RPT STail Elim",      MENU_RP_STE        },
+    {"Roger",       MENU_ROGER         },
+    {"Stail El",         MENU_STE           },
+    {"StailRPT",      MENU_RP_STE        },
     {"1 Call",      MENU_1_CALL        },
 #ifdef ENABLE_ALARM
     {"Alarm T",      MENU_AL_MOD        },
@@ -113,52 +113,48 @@ const t_menu_item MenuList[] =
     {"UP Code",      MENU_UPCODE        },
     {"DW Code",      MENU_DWCODE        },
     {"PTT ID",      MENU_PTT_ID        },
-    {"DTMF SideTone",        MENU_D_ST          },
+    {"DTMF ST",        MENU_D_ST          },
 #ifdef ENABLE_DTMF_CALLING
-    {"DTMF Response",      MENU_D_RSP         },
-    {"DTMF Hold",      MENU_D_HOLD        },
+    {"DTMFResp",      MENU_D_RSP         },
+    {"DTMFHold",      MENU_D_HOLD        },
 #endif
-    {"DTMF Preload",      MENU_D_PRE         },
+    {"DTMFPrel",      MENU_D_PRE         },
 #ifdef ENABLE_DTMF_CALLING
-    {"DTMF Decoding",      MENU_D_DCD         },
-    {"DTMF ContactList",      MENU_D_LIST        },
+    {"DTMFDec",      MENU_D_DCD         },
+    {"DTMFList",      MENU_D_LIST        },
 #endif
-    {"DTMF Live Decode",      MENU_D_LIVE_DEC    }, // live DTMF decoder
+    {"DTMFLive",      MENU_D_LIVE_DEC    }, // live DTMF decoder
 #ifndef ENABLE_FEAT_F4HWN
     #ifdef ENABLE_AM_FIX
         {"AM Fix",      MENU_AM_FIX        },
     #endif
 #endif
     {"VOX",         MENU_VOX           },
-#ifdef ENABLE_FEAT_F4HWN
-    {"System Info",      MENU_VOL           }, // was "VOL"
-#else
-    {"Battery Voltage",      MENU_VOL           }, // was "VOL"
-#endif
+    {"Sys Info",      MENU_VOL           }, // was "VOL"
     {"Rx Mode",      MENU_TDR           },
     {"Squelch",         MENU_SQL           },
 #ifdef ENABLE_FEAT_F4HWN
-    {"User Power",      MENU_SET_PWR       },
+    {"UsrPower",      MENU_SET_PWR       },
     {"PTT Type",      MENU_SET_PTT       },
-    {"TOT Alert",      MENU_SET_TOT       },
-    {"EOT Indicator",      MENU_SET_EOT       },
+    {"TOT Alrt",      MENU_SET_TOT       },
+    {"EOT Ind",      MENU_SET_EOT       },
     {"Set Ctr",      MENU_SET_CTR       },
-    {"Invert Display",      MENU_SET_INV       },
-    {"KeyLock PTT",      MENU_SET_LCK       },
-    {"S-Meter Style",      MENU_SET_MET       },
+    {"Inv Disp",      MENU_SET_INV       },
+    {"Lock PTT",      MENU_SET_LCK       },
+    {"S-Meter",      MENU_SET_MET       },
     {"GUI Size",      MENU_SET_GUI       },
-    {"RxTx Timer",      MENU_SET_TMR       },
+    {"RxTxTime",      MENU_SET_TMR       },
 #ifdef ENABLE_FEAT_F4HWN_SLEEP
     {"Sleep",       MENU_SET_OFF      },
 #endif
 #ifdef ENABLE_FEAT_F4HWN_NARROWER
-    {"Set NarrowFM",      MENU_SET_NFM       },
+    {"Narrower",      MENU_SET_NFM       },
 #endif
 #ifdef ENABLE_FEAT_F4HWN_VOL
-    {"Set Volume",      MENU_SET_VOL       },
+    {"Spk Gain",      MENU_SET_VOL       },
 #endif
 #ifdef ENABLE_FEAT_F4HWN_RESCUE_OPS
-    {"RescueOps Key",      MENU_SET_KEY       },
+    {"ROps Key",      MENU_SET_KEY       },
 #endif
 #ifdef ENABLE_NOAA
     {"NOAA",      MENU_NOAA_S    },
@@ -174,13 +170,13 @@ const t_menu_item MenuList[] =
 #endif
     {"350 En",      MENU_350EN         }, // was "350EN"
 #ifndef ENABLE_FEAT_F4HWN
-    {"ScraEn",      MENU_SCREN         }, // was "SCREN"
+    {"Scrmb En",      MENU_SCREN         }, // was "SCREN"
 #endif
 #ifdef ENABLE_F_CAL_MENU
-    {"xtal fr Calibr.",      MENU_F_CALI        }, // reference xtal calibration
+    {"Xtal Cal",      MENU_F_CALI        }, // reference xtal calibration
 #endif
-    {"Batery Calibr.",      MENU_BATCAL        }, // battery voltage calibration
-    {"Battery Type",      MENU_BATTYP        }, // battery type 1600/2200mAh
+    {"Bat Cal",      MENU_BATCAL        }, // battery voltage calibration
+    {"Bat Type",      MENU_BATTYP        }, // battery type 1600/2200mAh
     {"Reset",       MENU_RESET         }, // might be better to move this to the hidden menu items ?
 
     {"",                              0xff               }  // end of list - DO NOT delete or move this this
@@ -495,7 +491,6 @@ int     edit_index;
 
 void UI_DisplayMenu(void)
 {
-    const unsigned int menu_list_width = 16; // max no. of characters on the menu list (left side)
     const unsigned int menu_item_x1    = 1;
     const unsigned int menu_item_x2    = LCD_WIDTH - 1;
     unsigned int       i;
@@ -516,7 +511,7 @@ void UI_DisplayMenu(void)
 
 
     // invert the current menu list item pixels
-    for (i = 0; i < (8 * menu_list_width) - 16; i++)
+    for (i = 0; i < LCD_WIDTH - 16; i++)
     {
         gFrameBuffer[1][i] ^= 0xFE;
     }

@@ -24,7 +24,7 @@
 #include "settings.h"
 
 typedef struct {
-    const char  name[17];    // menu display area only has room for 6 characters
+    const char  name[9];    // menu display area only has room for 6 characters
     uint8_t     menu_id;
 } t_menu_item;
 
