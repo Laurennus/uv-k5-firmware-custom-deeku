@@ -28,12 +28,14 @@
 #include "ui/helper.h"
 #include "ui/inputbox.h"
 #include "ui/ui.h"
+#include "ui/main.h"
 
 static uint8_t lineOffset;
 static void drawFM(void);
 static void invertFMTop(void);
 void UI_DisplayFM(void)
 {
+    UI_DisplayMain();
     char String[16] = {0};
     unsigned int activeTxVFO = gRxVfoIsActive ? gEeprom.RX_VFO : gEeprom.TX_VFO;
     if ((gEeprom.DUAL_WATCH == DUAL_WATCH_OFF) && (gEeprom.CROSS_BAND_RX_TX == CROSS_BAND_OFF)) // main only

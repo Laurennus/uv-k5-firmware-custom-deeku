@@ -336,8 +336,6 @@ void Main(void)
     #endif
     */
 
-    UI_DisplayClear();
-
     #ifdef ENABLE_FEAT_F4HWN_RESUME_STATE
         if (gEeprom.CURRENT_STATE == 2 || gEeprom.CURRENT_STATE == 5) {
             gScanRangeStart = gScanRangeStart ? 0 : gTxVfo->pRX->Frequency;
