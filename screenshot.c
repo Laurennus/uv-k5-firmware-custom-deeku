@@ -50,19 +50,6 @@ void getScreenShot(bool force)
         return;
     }
 
-    // Build current frame from status line (first 8 lines)
-    for (uint8_t b = 0; b < 8; b++) {
-        for (uint8_t i = 0; i < 128; i++) {
-            uint8_t bit = (gStatusLine[i] >> b) & 0x01;
-            acc |= (bit << bitCount++);
-            if (bitCount == 8) {
-                currentFrame[index++] = acc;
-                acc = 0;
-                bitCount = 0;
-            }
-        }
-    }
-
     // Build remaining part of the frame (7 * 8 lines)
     for (uint8_t l = 0; l < 7; l++) {
         for (uint8_t b = 0; b < 8; b++) {
@@ -74,6 +61,19 @@ void getScreenShot(bool force)
                     acc = 0;
                     bitCount = 0;
                 }
+            }
+        }
+    }
+
+    // Build current frame from status line (first 8 lines)
+    for (uint8_t b = 0; b < 8; b++) {
+        for (uint8_t i = 0; i < 128; i++) {
+            uint8_t bit = (gStatusLine[i] >> b) & 0x01;
+            acc |= (bit << bitCount++);
+            if (bitCount == 8) {
+                currentFrame[index++] = acc;
+                acc = 0;
+                bitCount = 0;
             }
         }
     }
