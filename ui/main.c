@@ -272,30 +272,37 @@ void DisplayRSSIBar(const bool now)
     //sprintf(String, "%d", RxBlink);
     //UI_PrintStringSmallBold(String, 80, 0, RxLine);
 
+    // for (uint8_t i = 0; i < 14; i++)
+    // {
+    //     gFrameBuffer[RxLine][i+8] &= 0x01;
+    // }
+
     if(RxLine >= 0 && center_line != CENTER_LINE_IN_USE)
     {
         if (RxBlink == 0 || RxBlink == 1) {
-            if(!isMainOnly()) {
-                for (uint8_t i = 0; i < 14; i++)
-                {
-                    gFrameBuffer[RxLine][i+8] &= 0x01;
-                }
-            }
             UI_PrintStringSmallNormal(">>", 8, 0, RxLine);
-            if(!isMainOnly()) {
-                for (int8_t i = 0; i < 14; i++)
-                {
-                    gFrameBuffer[RxLine][i+8] ^= 0xFE;
-                }
+
+            // le box
+            for (int i=0; i < 12; i++)
+            {
+                gFrameBuffer[RxLine][i+9] |= 0b10000010;
             }
+            gFrameBuffer[RxLine][8] = 0b10000010;
+            gFrameBuffer[RxLine][15] = 0b10000010;
+            gFrameBuffer[RxLine][21] = 0b11111110;
+
             if (RxBlink == 1) RxBlink = 2;
         } else {
-             for (uint8_t i = 0; i < 14; i++)
-             {
-                 gFrameBuffer[RxLine][i+8] = isMainOnly() ? 0xff : 0xfe;
-             }
-             RxBlink = 1;
+            // empty box
+            for (int i=0; i < 12; i++)
+            {
+                gFrameBuffer[RxLine][i+9] = 0b10000010;
+            }
+
+            RxBlink = 1;
         }
+
+        // le box
         ST7565_BlitLine(RxLine);
     }
 #else
@@ -769,6 +776,11 @@ void UI_DisplayMain(void)
                 {   // show the TX symbol
                     mode = VFO_MODE_TX;
                     UI_PrintStringSmallNormal("TX", 8, 0, line);
+                    // le box
+                    for (int i=0; i < 14; i++)
+                    {
+                        gFrameBuffer[line][i+8] ^= 0b01111100;
+                    }
                 }
             }
         }
@@ -782,14 +794,7 @@ void UI_DisplayMain(void)
                 RxBlinkLedCounter = 0;
                 RxLine = line;
                 RxOnVfofrequency = frequency;
-                if(!isMainVFO)
-                {
-                    RxBlink = 1;
-                }
-                else
-                {
-                    RxBlink = 0;
-                }
+                RxBlink = !isMainVFO;
 #else
                 UI_PrintStringSmallBold("RX", 8, 0, line);
 #endif
