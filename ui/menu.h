@@ -23,10 +23,20 @@
 #include "audio.h"     // VOICE_ID_t
 #include "settings.h"
 
+extern int inSubMenu;
+extern int subMenuIndex;
+extern int subMenuIndexOnScreen;
+extern int *currentMenuIndex;
+extern int *currentMenuIndexOnScreen;
+extern const int *currentMenuListCount;
+extern bool menuEditing;
+extern int menuSelection;
+
 typedef struct {
     const char  name[9];    // menu display area only has room for 6 characters
     uint8_t     menu_id;
 } t_menu_item;
+extern const t_menu_item (*currentMenuList)[];
 
 enum
 {
@@ -158,7 +168,14 @@ enum
     MENU_F2SHRT,
     MENU_F2LONG,
     MENU_MLONG,
-    MENU_BATTYP
+    MENU_BATTYP,
+
+    SUBMENU_HIDDEN,
+    SUBMENU_CHANNEL,
+    SUBMENU_DISPLAY,
+    SUBMENU_SYSTEM,
+    SUBMENU_SCANNING
+
 };
 
 extern const uint8_t FIRST_HIDDEN_MENU_ITEM;
